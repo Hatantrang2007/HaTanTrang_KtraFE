@@ -1,0 +1,454 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HaTanTrang_KtraFe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #EAEDED;
+        }
+        .header {
+            background-color: #131921;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+        }
+        .header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .search-bar {
+            display: flex;
+            flex: 1;
+            max-width: 600px;
+            margin: 0 20px;
+        }
+        .search-bar input {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+        }
+        .search-bar button {
+            background-color: #febd69;
+            border: none;
+            padding: 0 15px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        .header-right {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            font-size: 14px;
+        }
+        .cart {
+            cursor: pointer;
+        }
+        .main-container {
+            display: flex;
+            padding: 20px;
+            gap: 20px;
+        }
+        .sidebar {
+            width: 220px;
+            background: white;
+            padding: 15px;
+            border-radius: 4px;
+            height: fit-content;
+        }
+        .sidebar h3 {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #0F1111;
+        }
+        .sidebar ul {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #007185;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+        .sidebar ul li a:hover {
+            color: #c7511f;
+            text-decoration: underline;
+        }
+        .sidebar p {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.6;
+            cursor: pointer;
+        }
+        .product-section {
+            flex: 1;
+        }
+        .product-section h2 {
+            font-size: 20px;
+            color: #0F1111;
+            margin-bottom: 10px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .product-card {
+            background: white;
+            padding: 15px;
+            border-radius: 4px;
+            text-align: center;
+            border: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .product-card img {
+            max-width: 100%;
+            height: 150px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+        .product-title {
+            font-size: 12px;
+            color: #007185;
+            text-align: left;
+            margin-bottom: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-decoration: none;
+        }
+        .product-title:hover {
+            color: #c7511f;
+            text-decoration: underline;
+        }
+        .rating {
+            font-size: 11px;
+            color: #ffa41c;
+            text-align: left;
+            margin-bottom: 8px;
+        }
+        .rating span {
+            color: #007185;
+            margin-left: 5px;
+        }
+        .price {
+            font-size: 16px;
+            font-weight: bold;
+            text-align: left;
+            margin-bottom: 10px;
+            color: #0F1111;
+        }
+        .price span {
+            font-size: 10px;
+            vertical-align: super;
+        }
+        .product-card button {
+            background-color: #ffd814;
+            border: 1px solid #fcd200;
+            width: 100%;
+            padding: 8px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .product-card button:hover {
+             background-color: #f7ca00;
+        }
+        .extra-section {
+            background: white;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .section-header h3 {
+             font-size: 18px;
+             color: #0F1111;
+        }
+
+        .section-header span {
+            font-size: 12px;
+            color: #565959;
+        }
+
+        .horizontal-scroll {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+        .horizontal-scroll .product-card {
+            min-width: 170px;
+            flex: 0 0 auto;
+        }
+        .footer {
+            background-color: #232f3e;
+            color: white;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 30px;
+            font-size: 12px;
+        }
+        .footer-col h4 {
+            font-size: 14px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        .footer-col p {
+            color: #dddddd;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <i class="fab fa-amazon">amazon</i>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search Amazon">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        <div class="header-right">
+            <div class="account">Hello, Sign in</div>
+            <div class="cart">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Cart</span>
+            </div>
+        </div>
+    </header>
+    <div class="main-container">
+        <aside class="sidebar">
+            <h3>Department</h3>
+            <ul>
+                <li><a href="#">Household Cleaning Tools</a></li>
+                <li><a href="#">Cleaning Brush</a></li>
+            </ul>
+            <h3>Price</h3>
+            <p>Under $25</p>
+            <p>$25 to $50</p>
+        </aside>
+        <section class="product-section">
+            <h2>Results</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRov-92URoH3IvkfJZahPJowL-_b1q__BAC0rGv8Viwfg&s" alt="Product">
+                    <a href="#" class="product-title">Electric Spin Scrubber, Cordless Cleaning Brush for Bathroom...</a>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                        <span>3,948</span>
+                    </div>
+                    <p class="price">$39<span>99</span></p>
+                    <button>Add to cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHNl_NhIwVg41JBEPrJim-SCjq405o-rF5dSgtl8ATMg&s=10" alt="Product">
+                    <a href="#" class="product-title">Extendable Power Spin Scrubber - Cordless Electric Cleaner...</a>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        <span>1,245</span>
+                    </div>
+                    <p class="price">$49<span>00</span></p>
+                    <button>Add to cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN-dHzWC41-62hxR6xcXn1a7TpGlpWjkbTLqk1ODh1-g&s=10" alt="Product">
+                    <a href="#" class="product-title">Cordless Power Spin Handheld Cleaning Brush with Digital Display</a>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                        <span>856</span>
+                    </div>
+                    <p class="price">$34<span>99</span></p>
+                    <button>Add to cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5Rl1CDPPM-vBoIBgO6dNE-AL2-zyhA2MdYzgLFXbwSQ&s=10" alt="Product">
+                    <a href="#" class="product-title">Bathroom Power Spin Scrubber with LCD Display & Adjustable Handle</a>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <span>4,210</span>
+                    </div>
+                    <p class="price">$39<span>99</span></p>
+                    <button>Add to cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRu5C-ipL-CXy63HA8iwhen7E8gFdEPDsITie3n0xNRJg&s" alt="Product">
+                    <a href="#" class="product-title">Handheld Electric Cleaning Brush for Kitchen, Tile, Tub, Car Deck</a>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                        <span>532</span>
+                    </div>
+                    <p class="price">$25<span>99</span></p>
+                    <button>Add to cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJFaK4-ejrmxjDytp5yxDA5gTqgJPBq17ftQnn2xr-aA&s" alt="Product">
+                    <a href="#" class="product-title">Multi-purpose Cordless Scrubber with Replaceable Brush Heads</a>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        <span>2,104</span>
+                    </div>
+                    <p class="price">$42<span>50</span></p>
+                    <button>Add to cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRbmD-Xy-scOFCDxK5qYFlkOrjcijddQsYAFr8eWLXirBOPPbmZKhJHSGzNwiZYU4zYTMjo9gKX96xu8tQvb741eO4lHQLAgw" alt="Product">
+                    <a href="#" class="product-title">Shop-Vac Electric Spin Scrubber</a>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        <span>2,104</span>
+                    </div>
+                    <p class="price">$50<span>99</span></p>
+                    <button>Add to cart</button>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="extra-section">
+        <div class="section-header">
+            <h3>Customers who viewed items in your browsing history also viewed</h3>
+            <span>Page 1 of 3</span>
+        </div>
+        <div class="horizontal-scroll">
+            <div class="product-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJ7D8_nT8iPjnNuZsmCq7Ic5wGmCA9msO_TGEeebn0LQ&s=10" alt="Bag">
+                <a href="#" class="product-title">Tommy Hilfiger Womens Monogram Mini Tote Bag</a>
+                <div class="rating"><i class="fas fa-star"></i><span>8</span></div>
+                <p class="price">$82<span>00</span></p>
+            </div>
+            <div class="product-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_SmxptoA4iUTzfpt7ZCXGzlkiS4_lOYMitxw_Dj59tw&s=10" alt="Bag">
+                <a href="#" class="product-title">Tommy Hilfiger Leather Shoulder Bag with Removable Strap</a>
+                <div class="rating"><i class="fas fa-star"></i><span>37</span></div>
+                <p class="price">$69<span>99</span></p>
+            </div>
+            <div class="product-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO0Qp-inxwcwWnVa5uOkQWc0EX6VegJcCX27YgewkE_A&s=10" alt="Bag">
+                <a href="#" class="product-title">Tommy Hilfiger Womens Poppy Small Tote</a>
+                <div class="rating"><i class="fas fa-star"></i><span>3</span></div>
+                <p class="price">$73<span>99</span></p>
+            </div>
+            <div class="product-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZtXP6BvkoKoAtthE_grOVWWMYCa2P_ZPOaQVJwB9_1Q&s" alt="Bag">
+                <a href="#" class="product-title">Tommy Hilfiger Monogram Leather Tote with Zipper Pocket</a>
+                <div class="rating"><i class="fas fa-star"></i><span>25</span></div>
+                <p class="price">$122<span>25</span></p>
+            </div>
+            <div class="product-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMFgo0XmWol_hRZdrnaf4a9itwcYhK1eFFRVS6PAvhlQ&s=10" alt="Bag">
+                <a href="#" class="product-title">Tommy Hilfiger Monogram Shoulder Bag</a>
+                <div class="rating"><i class="fas fa-star"></i><span>7</span></div>
+                <p class="price">$61<span>20</span></p>
+            </div>
+            <div class="product-card">
+                <img src="https://mediaelly.sgp1.digitaloceanspaces.com/uploads/2021/09/29233813/thong-tin-chi-tiet-nhat-ve-thuong-hieu-tui-xach-tommy-hilfiger.6.jpg" alt="Bag">
+                <a href="#" class="product-title">Tommy Hilfiger Mini Houndstooth In Satchel</a>
+                <div class="rating"><i class="fas fa-star"></i><span>7</span></div>
+                <p class="price">$79<span>20</span></p>
+            </div>
+        </div>
+    </div>
+    <div class="extra-section">
+        <div class="section-header">
+            <h3>Recommended based on your browsing history</h3>
+            <span>Page 1 of 2</span>
+        </div>
+        <div class="horizontal-scroll">
+            <div class="product-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4nxFQm-4z8HKGQS-ISj-rvDUPRT8lxJEESxN6-dSnSA&s=10" alt="Bag">
+                <a href="#" class="product-title">DORIS&JACKY Designer Tote Bag for Women</a>
+                <div class="rating"><i class="fas fa-star"></i><span>671</span></div>
+                <p class="price">$55<span>99</span></p>
+            </div>
+            <div class="product-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm5L2HYqRSW5Ze-aLJofMlRDLu0OYy09rJa7suStT2Lg&s=10" alt="Bag">
+                <a href="#" class="product-title">MTFOR Tote Bag for Women Genuine Leather</a>
+                <div class="rating"><i class="fas fa-star"></i><span>13</span></div>
+                <p class="price">$79<span>99</span></p>
+            </div>
+            <div class="product-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoMnlNiGAz4qAIPC8zv2UscE-gSXedscuxS9qLlh48mA&s=10" alt="Bag">
+                <a href="#" class="product-title">MKP Women Fashion Satchel Handbags</a>
+                <div class="rating"><i class="fas fa-star"></i><span>255</span></div>
+                <p class="price">$48<span>99</span></p>
+            </div>
+            <div class="product-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRocVSgNVhXgUJvPoqxj_7QRK8VfSzt8Y0ZeEZqkz-M_w&s=10" alt="Bag">
+                <a href="#" class="product-title">Simple Solid Color Pu Leather Top Handle Satchel</a>
+                <div class="rating"><i class="fas fa-star"></i><span>171</span></div>
+                <p class="price">$19<span>99</span></p>
+            </div>
+            <div class="product-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU8uQop7I89Cmr9ecBBf1_6y6zh7I_EoFlqxOa4jkuwA&s=10" alt="Bag">
+                <a href="#" class="product-title">PUMA Unisex Kid's Adventure Lunch Tote</a>
+                <div class="rating"><i class="fas fa-star"></i><span>68</span></div>
+                <p class="price">$13<span>60</span></p>
+            </div>
+            <div class="product-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCjwIRSjJCo6tyWAIPDEGSCpfgYF_h1Q1ltK92vRuwLw&s=10" alt="Bag">
+                <a href="#" class="product-title">The Louis Vuitton Neverfull Tote</a>
+                <div class="rating"><i class="fas fa-star"></i><span>68</span></div>
+                <p class="price">$20<span>99</span></p>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-col">
+            <h4>Amazon Music</h4>
+            <p>Stream millions of songs</p>
+            <h4>Amazon Business</h4>
+            <p>Everything For Your Business</p>
+        </div>
+        <div class="footer-col">
+            <h4>Amazon Ads</h4>
+            <p>Reach customers wherever they spend their time</p>
+            <h4>AmazonGlobal</h4>
+            <p>Ship Orders Internationally</p>
+        </div>
+        <div class="footer-col">
+            <h4>6pm</h4>
+            <p>Score deals on fashion brands</p>
+            <h4>Amazon Web Services</h4>
+            <p>Scalable Cloud Computing Services</p>
+        </div>
+        <div class="footer-col">
+            <h4>AbeBooks</h4>
+            <p>Books, art & collectibles</p>
+            <h4>Audible</h4>
+            <p>Listen to Books & Original Audio Performances</p>
+        </div>
+    </footer>
+</body>
+</html>
